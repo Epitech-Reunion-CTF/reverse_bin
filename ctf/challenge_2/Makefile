@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -g3
 LDFLAGS=-lcrypto
 SOURCES=ctf2.c tools_ascii_md5.c tools_binary_ascii.c strcat_bit.c
 OBJECTS=$(SOURCES:.c=.o)
@@ -15,3 +15,7 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	rm -f $(EXECUTABLE) $(OBJECTS)
+
+# admin
+# rootroot
+# "le flag est adminrootrootPs : toute la phrase"

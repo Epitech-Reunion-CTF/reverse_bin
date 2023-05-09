@@ -79,9 +79,6 @@ get_stdint(char *name, ssize_t *nread, size_t *len, char **line)
 int
 main(int ac, char **av)
 {
-    char xlxg[1500] = {0};
-    char xlxg2[5000] = {0};
-    char xlxg3[10000] = {0};
     char *line_log_buf = NULL;
     char *line_psswd_buf = NULL;
     char *line_log = NULL;
@@ -120,10 +117,11 @@ main(int ac, char **av)
             pflush("Bad password -> %s\n", line_log_buf);
             return (EXIT_FAILURE);
         } else {
-            strcat_bit(xlxg2, LOG_LL);
-            strcat_bit(xlxg, strcat((xlxg2), struct_psswd->pass_log));
-            strcat_bit(xlxg3, strcat(xlxg, LOG_PP));
-            pflush("%s\n", xlxg3);
+            
+            pflush("%s\n", LOG_LL);
+            pflush("%s\n", LOG_L);
+            pflush("%s\n", LOG_P);
+            pflush("%s\n", LOG_PP);
             return (EXIT_SUCCESS);
         }
     } else {

@@ -15,3 +15,7 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	rm -f $(EXECUTABLE) $(OBJECTS)
+
+# toto
+# azerty
+# totoazerty

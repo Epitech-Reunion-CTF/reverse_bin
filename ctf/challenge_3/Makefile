@@ -16,5 +16,4 @@ $(EXECUTABLE): $(OBJECTS)
 clean:
 	rm -f $(EXECUTABLE) $(OBJECTS)
 
-# // admin_1234
-# // superuser
+# "le flag estadmin_1234superuser<- à trouver"

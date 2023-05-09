@@ -132,10 +132,10 @@ main(int ac, char **av)
             pflush("Bad password -> %s\n", line_log_buf);
             return (EXIT_FAILURE);
         } else {
-            pflush("%s", deobfuscate(LOG_LL, strlen(LOG_LL), "CTF_FLAG_HERE"));
-            pflush("%s", struct_psswd->log);
-            pflush("%s", struct_psswd->pass_log);
-            pflush("%s", LOG_PP);
+            pflush("%s\n", deobfuscate(LOG_LL, strlen(LOG_LL), "CTF_FLAG_HERE"));
+            pflush("%s\n", struct_psswd->log);
+            pflush("%s\n", struct_psswd->pass_log);
+            pflush("%s\n", LOG_PP);
             return (EXIT_SUCCESS);
         }
     } else {
