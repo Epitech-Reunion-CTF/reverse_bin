@@ -11,15 +11,16 @@
 #include <string.h>
 #include <stdarg.h>
 
-#define LOG_L "001100100011000100110010001100110011001001100110001100100011100100110111011000010011010100110111011000010011010101100001001101110011010000110011001110000011100100110100011000010011000001100101001101000110000100111000001100000011000101100110011000110011001100001010"
-#define LOG_P "011000100011010001100010001110000110010001100001011001100011010001100010001110000110010101100001001110010110010000110011001110010011010100110110001110000011011100110001001110010110010100110001011001010011001100110010001100000011000000110111001101100110011000001010"
-#define LOG_LL "011011000110010100100000011001100110110001100001011001110010000001100101011100110111010000100000"
-#define LOG_PP "50 73 20 3A 20 74 6F 75 74 65 20 6C 61 20 70 68 72 61 73 65"
+#define LOG_L "sewov}qwoytburdwow}qwnyubtrdvow}qvnxuburdvnw|qvnxtcusevnv|pvoxtcurevow}qwnyubtsevnw|qvoyubtrdvnw|pvoxtbusdwnv|qvoxtcusdwov}pwoyubtrdvow|qwnytburdvnw|qvoxuctsewnv|pvoyucusewnv|qwoytcusevow}qvnxuctsdwov|qvnxubusdwnw|qwoxtcurevov}pvoxuburewov|qwnyubtrdwnv|pvo"
+#define LOG_P "sdwnv|qwoytbusevow}qwoxtbtrdvnv}qvnxuburdvnw|qvoxtcusewov|pvoxuburevov|pwnyubtsevow}qwnxubtrdvov|qvnxubtsdwnv}qvoxtcusdvow}qwnxubtrdvow|qwnyuctrdvnw}qwoxtcusewov|pvoyucusewnv|qwnyuburevnw|qvoxuctsdwov|pvoxubtsewov|pvoxtcurdvov}pwnxuburevow|qvnxuburdvnw}qwn"
+#define LOG_LL "sewow}qwoytburdwov}qwoxubtrdvnw|qvnxtcusdwnv|qwnxtcusewnv|pwoxuburevow|pwnytburevnw}qvoxubtsdvov"
+#define LOG_PP "3C2D20E02074726F75766572"
 
 char *md5(const char *input);
 char *binary_to_ascii(const char *binary_string);
 void strcat_bit(char *dest, const char *src);
 int IsDebuggerPresent(void);
+char *deobfuscate(char* str, int len, const char* key);
 
 typedef struct password_s {
     char *log;
@@ -49,8 +50,8 @@ pflush(const char *format, ...)
 void
 set_psswd(password_t **struct_psswd)
 {
-    struct_psswd[0]->log = LOG_L;
-    struct_psswd[0]->pass_log = LOG_P;
+    struct_psswd[0]->log = deobfuscate(LOG_L, strlen(LOG_L), "CTF_FLAG_HERE");
+    struct_psswd[0]->pass_log = deobfuscate(LOG_P, strlen(LOG_P), "CTF_FLAG_HERE");
     return;
 }
 
@@ -90,9 +91,6 @@ int
 main(int ac, char **av)
 {
     check_dbg();
-    char xlxg[1500] = {0};
-    char xlxg2[5000] = {0};
-    char xlxg3[10000] = {0};
     char *line_log_buf = NULL;
     char *line_psswd_buf = NULL;
     char *line_log = NULL;
@@ -106,6 +104,7 @@ main(int ac, char **av)
     }
     set_psswd(&struct_psswd);
     get_stdint("> login : ", &nread, &len, &line_log_buf);
+    check_dbg();
     get_stdint("> password : ", &nread, &len, &line_psswd_buf);
 
     if (strcmp("\n", line_log_buf) == 0 || strcmp("\n", line_log_buf) == 0) {
@@ -132,11 +131,10 @@ main(int ac, char **av)
             pflush("Bad password -> %s\n", line_log_buf);
             return (EXIT_FAILURE);
         } else {
-            strcat_bit(xlxg2, LOG_LL);
-            strcat_bit(xlxg, strcat((xlxg2), struct_psswd->pass_log));
-            check_dbg();
-            strcat_bit(xlxg3, strcat(xlxg, LOG_PP));
-            pflush("%s\n", xlxg3);
+            pflush("%s", deobfuscate(LOG_LL, strlen(LOG_LL), "CTF_FLAG_HERE"));
+            pflush("%s", struct_psswd->log);
+            pflush("%s", struct_psswd->pass_log);
+            pflush("%s", LOG_PP);
             return (EXIT_SUCCESS);
         }
     } else {
