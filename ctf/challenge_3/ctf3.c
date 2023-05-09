@@ -10,6 +10,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdarg.h>
+#include <sys/ptrace.h>
 
 #define LOG_L "sewov}qwoytburdwow}qwnyubtrdvow}qvnxuburdvnw|qvnxtcusevnv|pvoxtcurevow}qwnyubtsevnw|qvoyubtrdvnw|pvoxtbusdwnv|qvoxtcusdwov}pwoyubtrdvow|qwnytburdvnw|qvoxuctsewnv|pvoyucusewnv|qwoytcusevow}qvnxuctsdwov|qvnxubusdwnw|qwoxtcurevov}pvoxuburewov|qwnyubtrdwnv|pvo"
 #define LOG_P "sdwnv|qwoytbusevow}qwoxtbtrdvnv}qvnxuburdvnw|qvoxtcusewov|pvoxuburevov|pwnyubtsevow}qwnxubtrdvov|qvnxubtsdwnv}qvoxtcusdvow}qwnxubtrdvow|qwnyuctrdvnw}qwoxtcusewov|pvoyucusewnv|qwnyuburevnw|qvoxuctsdwov|pvoxubtsewov|pvoxtcurdvov}pwnxuburevow|qvnxuburdvnw}qwn"
@@ -30,9 +31,13 @@ typedef struct password_s {
 void
 check_dbg(void)
 {
-    if (IsDebuggerPresent() != 0) {
-        exit(EXIT_FAILURE);
+    if (ptrace(PTRACE_TRACEME, 0) < 0) {
+        printf("\"DEBUGGER IS NOT ALLOWED\"\n");
+        exit(1);
     }
+    // if (IsDebuggerPresent() != 0) {
+    //     exit(EXIT_FAILURE);
+    // }
     return;
 }
 
@@ -97,20 +102,17 @@ main(int ac, char **av)
     char *line_psswd = NULL;
     size_t len = 0;
     ssize_t nread = 0;
-    check_dbg();
     password_t *struct_psswd = malloc(sizeof(password_t));
     if (struct_psswd == NULL) {
         return (EXIT_FAILURE);
     }
     set_psswd(&struct_psswd);
     get_stdint("> login : ", &nread, &len, &line_log_buf);
-    check_dbg();
     get_stdint("> password : ", &nread, &len, &line_psswd_buf);
 
     if (strcmp("\n", line_log_buf) == 0 || strcmp("\n", line_log_buf) == 0) {
         return (EXIT_FAILURE);
     }
-    check_dbg();
     size_t len_log = strlen(line_log_buf);
     size_t len_psswd = strlen(line_psswd_buf);
 
@@ -123,7 +125,6 @@ main(int ac, char **av)
     if (nread == -1) {
         exit(EXIT_FAILURE);
     }
-    check_dbg();
     resize_line(&line_log);
     resize_line(&line_psswd);
     if (xnor(line_log, binary_to_ascii(struct_psswd->log), len_log - 1) == 0) {
