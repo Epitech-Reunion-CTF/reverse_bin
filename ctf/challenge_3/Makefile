@@ -16,4 +16,5 @@ $(EXECUTABLE): $(OBJECTS)
 clean:
 	rm -f $(EXECUTABLE) $(OBJECTS)
 
-# "le flag estadmin_1234superuser<- à trouver"
+#
+# "EPI{admin_1234superuser}"

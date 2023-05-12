@@ -14,8 +14,9 @@
 
 #define LOG_L "sewov}qwoytburdwow}qwnyubtrdvow}qvnxuburdvnw|qvnxtcusevnv|pvoxtcurevow}qwnyubtsevnw|qvoyubtrdvnw|pvoxtbusdwnv|qvoxtcusdwov}pwoyubtrdvow|qwnytburdvnw|qvoxuctsewnv|pvoyucusewnv|qwoytcusevow}qvnxuctsdwov|qvnxubusdwnw|qwoxtcurevov}pvoxuburewov|qwnyubtrdwnv|pvo"
 #define LOG_P "sdwnv|qwoytbusevow}qwoxtbtrdvnv}qvnxuburdvnw|qvoxtcusewov|pvoxuburevov|pwnyubtsevow}qwnxubtrdvov|qvnxubtsdwnv}qvoxtcusdvow}qwnxubtrdvow|qwnyuctrdvnw}qwoxtcusewov|pvoyucusewnv|qwnyuburevnw|qvoxuctsdwov|pvoxubtsewov|pvoxtcurdvov}pwnxuburevow|qvnxuburdvnw}qwn"
-#define LOG_LL "sewow}qwoytburdwov}qwoxubtrdvnw|qvnxtcusdwnv|qwnxtcusewnv|pwoxuburevow|pwnytburevnw}qvoxubtsdvov"
-#define LOG_PP "3C2D20E02074726F75766572"
+#define LOG_LL "sevov}qvoyucusdvow|qvoxtbtrewow}"
+#define SUPER "sdwnw|qvoxtcurevov}pwoxtburevnv}qwnytburdvnw|qvoxtcusdwnv|pvoxtcusewow}pwoytburevow}qwoyuctsdwow|qvnyubusdwnv}qvoxtcusdwov}pwoytbtrdvnv}qwnytbusdvnw|qwnxtcusdwnv}pwoxucurevow|pwoytbtrevow}qwnyubtrevow|pvoxubtsdwnv|pvoxtcurevow}qwoxtburevnw}qvnxucusdvnw}qwn"
+#define LOG_PP "7D"
 
 char *md5(const char *input);
 char *binary_to_ascii(const char *binary_string);
@@ -35,9 +36,6 @@ check_dbg(void)
         printf("\"DEBUGGER IS NOT ALLOWED\"\n");
         exit(1);
     }
-    // if (IsDebuggerPresent() != 0) {
-    //     exit(EXIT_FAILURE);
-    // }
     return;
 }
 
@@ -132,9 +130,8 @@ main(int ac, char **av)
             pflush("Bad password -> %s\n", line_log_buf);
             return (EXIT_FAILURE);
         } else {
-            pflush("%s\n", deobfuscate(LOG_LL, strlen(LOG_LL), "CTF_FLAG_HERE"));
-            pflush("%s\n", struct_psswd->log);
-            pflush("%s\n", struct_psswd->pass_log);
+            pflush("%s", deobfuscate(LOG_LL, strlen(LOG_LL), "CTF_FLAG_HERE"));
+            pflush("%s", deobfuscate(SUPER, strlen(SUPER), "CTF_FLAG_HERE"));
             pflush("%s\n", LOG_PP);
             return (EXIT_SUCCESS);
         }

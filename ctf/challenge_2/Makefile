@@ -18,4 +18,4 @@ clean:
 
 # admin
 # rootroot
-# "le flag est adminrootrootPs : toute la phrase"
+# "EPI{adminrootroot}"
