@@ -14,7 +14,7 @@
 
 #define LOG_L "sewov}qwoytburdwow}qwnyubtrdvow}qvnxuburdvnw|qvnxtcusevnv|pvoxtcurevow}qwnyubtsevnw|qvoyubtrdvnw|pvoxtbusdwnv|qvoxtcusdwov}pwoyubtrdvow|qwnytburdvnw|qvoxuctsewnv|pvoyucusewnv|qwoytcusevow}qvnxuctsdwov|qvnxubusdwnw|qwoxtcurevov}pvoxuburewov|qwnyubtrdwnv|pvo"
 #define LOG_P "sdwnv|qwoytbusevow}qwoxtbtrdvnv}qvnxuburdvnw|qvoxtcusewov|pvoxuburevov|pwnyubtsevow}qwnxubtrdvov|qvnxubtsdwnv}qvoxtcusdvow}qwnxubtrdvow|qwnyuctrdvnw}qwoxtcusewov|pvoyucusewnv|qwnyuburevnw|qvoxuctsdwov|pvoxubtsewov|pvoxtcurdvov}pwnxuburevow|qvnxuburdvnw}qwn"
-#define LOG_LL "sevov}qvoyucusdvow|qvoxtbtrewow}"
+#define LOG_LL "sevov}qvoyucusdvow|qvoxtbtsdvow}qvoyucusdwov|pvoxtctrdwn"
 #define SUPER "sdwnw|qvoxtcurevov}pwoxtburevnv}qwnytburdvnw|qvoxtcusdwnv|pvoxtcusewow}pwoytburevow}qwoyuctsdwow|qvnyubusdwnv}qvoxtcusdwov}pwoytbtrdvnv}qwnytbusdvnw|qwnxtcusdwnv}pwoxucurevow|pwoytbtrevow}qwnyubtrevow|pvoxubtsdwnv|pvoxtcurevow}qwoxtburevnw}qvnxucusdvnw}qwn"
 #define LOG_PP "7D"
 

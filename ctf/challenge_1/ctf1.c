@@ -18,7 +18,7 @@ typedef struct password_s {
 void
 set_psswd(password_t **my_struct_psswd)
 {
-    my_struct_psswd[0]->log = "EPI";
+    my_struct_psswd[0]->log = "EPICTF";
     my_struct_psswd[0]->pass_log = "{azertytoto}";
     return;
 }

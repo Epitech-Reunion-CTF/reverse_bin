@@ -17,4 +17,4 @@ clean:
 	rm -f $(EXECUTABLE) $(OBJECTS)
 
 #
-# "EPI{admin_1234superuser}"
+# "EPICTF{supertoto}"
